@@ -25,8 +25,8 @@ public class WordScrambler : MonoBehaviour {
 		words.Add (5, "idea");
 		words.Add (6, "aide");
 
-		words.Add (91, "rescued");
-		words.Add (92, "secured");
+		words.Add (90, "rescued");
+		words.Add (91, "secured");
 		//words with at least three different anagram configurations
 		words.Add (7, "lots");
 		words.Add (8, "slots");
@@ -36,69 +36,69 @@ public class WordScrambler : MonoBehaviour {
 		words.Add (11, "skid");
 		words.Add (12, "disk");
 
-		words.Add (21, "evil");
-		words.Add (22, "live");
-		words.Add (23, "vile");
+		words.Add (20, "evil");
+		words.Add (21, "live");
+		words.Add (22, "vile");
 
-		words.Add (28, "kale");
-		words.Add (29, "lake");
-		words.Add (30, "leak");
+		words.Add (27, "kale");
+		words.Add (28, "lake");
+		words.Add (29, "leak");
 
-		words.Add (31, "list");
-		words.Add (32, "slit");
-		words.Add (33, "silt");
+		words.Add (30, "list");
+		words.Add (31, "slit");
+		words.Add (32, "silt");
 
-		words.Add (34, "meat");
-		words.Add (35, "team");
-		words.Add (36, "tame");
+		words.Add (33, "meat");
+		words.Add (34, "team");
+		words.Add (35, "tame");
 
-		words.Add (37, "pale");
-		words.Add (38, "leap");
-		words.Add (39, "plea");
+		words.Add (36, "pale");
+		words.Add (37, "leap");
+		words.Add (38, "plea");
 
-		words.Add (45, "scar");
-		words.Add (46, "cars");
-		words.Add (47, "arcs");
+		words.Add (44, "scar");
+		words.Add (45, "cars");
+		words.Add (46, "arcs");
 
-		words.Add (48, "pools");
-		words.Add (49, "loops");
-		words.Add (50, "spool");
+		words.Add (47, "pools");
+		words.Add (48, "loops");
+		words.Add (49, "spool");
 
-		words.Add (51, "relay");
-		words.Add (52, "early");
-		words.Add (53, "layer");
+		words.Add (50, "relay");
+		words.Add (51, "early");
+		words.Add (52, "layer");
 
-		words.Add (54, "reset");
-		words.Add (55, "steer");
-		words.Add (56, "trees");
+		words.Add (53, "reset");
+		words.Add (54, "steer");
+		words.Add (55, "trees");
 
-		words.Add (57, "saint");
-		words.Add (58, "stain");
-		words.Add (59, "satin");
+		words.Add (56, "saint");
+		words.Add (57, "stain");
+		words.Add (58, "satin");
 
-		words.Add (72, "caller");
-		words.Add (73, "recall");
-		words.Add (74, "cellar");
+		words.Add (71, "caller");
+		words.Add (72, "recall");
+		words.Add (73, "cellar");
 
-		words.Add (75, "remain");
-		words.Add (76, "airmen");
-		words.Add (77, "marine");
+		words.Add (74, "remain");
+		words.Add (75, "airmen");
+		words.Add (76, "marine");
 
-		words.Add (78, "plates");
-		words.Add (79, "petals");
-		words.Add (80, "staple");
+		words.Add (77, "plates");
+		words.Add (78, "petals");
+		words.Add (79, "staple");
 
-		words.Add (85, "burden");
-		words.Add (86, "burned");
-		words.Add (87, "unbred");
+		words.Add (84, "burden");
+		words.Add (85, "burned");
+		words.Add (86, "unbred");
 
-		words.Add (88, "present");
-		words.Add (89, "repents");
-		words.Add (90, "serpent");
+		words.Add (87, "present");
+		words.Add (88, "repents");
+		words.Add (89, "serpent");
 
-		words.Add (93, "won");
-		words.Add (94, "own");
-		words.Add (95, "now");
+		words.Add (92, "won");
+		words.Add (93, "own");
+		words.Add (94, "now");
 		//words with at least four different anagram configurations
 		words.Add(13, "east");
 		words.Add (14, "eats");
@@ -108,39 +108,38 @@ public class WordScrambler : MonoBehaviour {
 		words.Add (17, "edit");
 		words.Add (18, "diet");
 		words.Add (19, "tide");
-		words.Add (20, "tide");
 
-		words.Add (24, "inks");
-		words.Add (25, "skin");
-		words.Add (26, "sink");
-		words.Add (27, "kins");
+		words.Add (23, "inks");
+		words.Add (24, "skin");
+		words.Add (25, "sink");
+		words.Add (26, "kins");
 
-		words.Add (60, "resin");
-		words.Add (61, "siren");
-		words.Add (62, "rinse");
-		words.Add (63, "risen");
+		words.Add (59, "resin");
+		words.Add (60, "siren");
+		words.Add (61, "rinse");
+		words.Add (62, "risen");
 
-		words.Add (64, "slime");
-		words.Add (65, "limes");
-		words.Add (66, "miles");
-		words.Add (67, "smile");
+		words.Add (63, "slime");
+		words.Add (64, "limes");
+		words.Add (65, "miles");
+		words.Add (66, "smile");
 
-		words.Add (68, "trace");
-		words.Add (69, "cater");
-		words.Add (70, "crate");
-		words.Add (71, "react");
+		words.Add (67, "trace");
+		words.Add (68, "cater");
+		words.Add (69, "crate");
+		words.Add (70, "react");
 
-		words.Add (81, "reared");
-		words.Add (82, "reread");
-		words.Add (83, "reader");
-		words.Add (84, "dearer");
+		words.Add (80, "reared");
+		words.Add (81, "reread");
+		words.Add (82, "reader");
+		words.Add (83, "dearer");
 
 		//words with at least five different anagram configuations
-		words.Add(40, "pots");
-		words.Add (41, "post");
-		words.Add (42, "spot");
-		words.Add (43, "stop");
-		words.Add (44, "tops");
+		words.Add(39, "pots");
+		words.Add (40, "post");
+		words.Add (41, "spot");
+		words.Add (42, "stop");
+		words.Add (43, "tops");
 	}
 	// Use this for initialization
 	void Start () {
