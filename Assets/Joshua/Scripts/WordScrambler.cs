@@ -150,7 +150,7 @@ public class WordScrambler : MonoBehaviour {
 		Answer = GameObject.Find ("AnswerField").gameObject.GetComponent<InputField> ();
 		ConfirmationText = GameObject.Find ("ConfirmationText").gameObject.GetComponent<Text> ();
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
-		Debug.Log (CurString);
+		//Debug.Log (CurString);
 		Answer.characterLimit = CurString.Length;
 		Answer.onEndEdit.AddListener(val =>
 			{
@@ -167,7 +167,7 @@ public class WordScrambler : MonoBehaviour {
 				}
 			});
 		scrambledword = ScrambleWord (CurString);
-		Debug.Log (scrambledword);
+		//Debug.Log (scrambledword);
 	}
 	
 	// Update is called once per frame
@@ -186,21 +186,21 @@ public class WordScrambler : MonoBehaviour {
 	{
 		string newword = word;
 		int wordsize = word.Length;
-		Debug.Log (wordsize);
+		//Debug.Log (wordsize);
 		for (int i = 0; i < 100; i++) 
 		{
-			int index1 = Random.Range (1, wordsize);
-			int index2 = Random.Range (1, wordsize);
+			int index1 = Random.Range (0, wordsize);
+			int index2 = Random.Range (0, wordsize);
 			while (index1 == index2) {
-				index2 = Random.Range (1, wordsize);
+				index2 = Random.Range (0, wordsize);
 			}
 			newword = swap (index1, index2, newword);
 		}
 		if (newword == CurString) {
-			int index1 = Random.Range (1, wordsize);
-			int index2 = Random.Range (1, wordsize);
+			int index1 = Random.Range (0, wordsize);
+			int index2 = Random.Range (0, wordsize);
 			while (index1 == index2) {
-				index2 = Random.Range (1, wordsize);
+				index2 = Random.Range (0, wordsize);
 			}
 			newword = swap (index1, index2, newword);
 		}
@@ -236,10 +236,10 @@ public class WordScrambler : MonoBehaviour {
 		ConfirmationText.text = "";
 		isCorrect = false;
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
-		Debug.Log (CurString);
+		//Debug.Log (CurString);
 		Answer.text = "";
 		Answer.characterLimit = CurString.Length;
 		scrambledword = ScrambleWord (CurString);
-		Debug.Log (scrambledword);
+		//Debug.Log (scrambledword);
 	}
 }
