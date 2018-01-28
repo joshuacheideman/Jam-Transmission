@@ -128,7 +128,7 @@ public class Buttons : MonoBehaviour {
 		sat1connect = false;
 		ButtonSelect2.Sort ();
 		foreach (int i in ButtonSelect2)
-			if (weaknesses [i] && UnityEngine.Random.Range (0, 100) < Chance (i) * 100) {
+			if (weaknesses [i] && UnityEngine.Random.Range (0, 100) < (Chance (i) * 100)/ButtonSelect2.Count) {
 				fubar++;
 				JamText.text = "We were able to successfully " + Decode (i) + " the message!";
 			} else
@@ -153,9 +153,9 @@ public class Buttons : MonoBehaviour {
 				break;
 			}
 			if (UnityEngine.Random.Range (0, 10) > 5)
-				JamText.text +="but the Enemy couldn't repair their message! SUCCESS, by the skin of your teeth!";
+				JamText.text +="\nbut the Enemy couldn't repair their message! SUCCESS, by the skin of your teeth!";
 			else
-				JamText.text += "and the Enemy was able to piece their message together! GAME OVER!";
+				JamText.text += "\nand the Enemy was able to piece their message together! GAME OVER!";
 		}
 	}
 	bool DetectAttempt(){
