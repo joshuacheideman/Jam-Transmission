@@ -40,7 +40,7 @@ public class WordScrambler : WordPuzzles {
 			});
 		scrambledword = ScrambleWord (CurString);
 		ScrambleText.text = scrambledword;
-		Debug.Log (scrambledword);
+		//Debug.Log (scrambledword);
 	}
 	
 	// Update is called once per frame
@@ -102,7 +102,7 @@ public class WordScrambler : WordPuzzles {
 		message = "You have successfully figured out the word!";
 		ConfirmationText.text = message;
 		ScramblerScore++;
-		Debug.Log (ScramblerScore);
+		//Debug.Log (ScramblerScore);
 	}
 	IEnumerator GenerateNewWord()
 	{

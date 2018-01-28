@@ -111,7 +111,7 @@ public class CaesarCipher : WordPuzzles {
 		message = "You have successfully figured out the word!";
 		ConfirmationText.text = message;
 		CaesarScore++;
-		Debug.Log (CaesarScore);
+		//Debug.Log (CaesarScore);
 	}
 	IEnumerator GenerateNewWord()
 	{
