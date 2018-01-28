@@ -13,6 +13,7 @@ public class CaesarCipher : WordPuzzles {
 	private bool isCorrect;
 	private Text ConfirmationText;
 	private InputField Answer;
+	private bool dou;
 	char[] alphabet = {
 		'a',
 		'b',
@@ -51,6 +52,13 @@ public class CaesarCipher : WordPuzzles {
 		Answer = GameObject.Find ("CiphAnswerField").gameObject.GetComponent<InputField> ();
 		ConfirmationText = GameObject.Find ("CipherConfirmationText").gameObject.GetComponent<Text> ();
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
+		dou = false;
+		while (!dou) {
+			words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
+			foreach (char x in CurString)
+				if (CurString.IndexOf (x) != CurString.LastIndexOf (x))
+					dou = true;
+		}
 		MakeCipher (CurString);
 		//Debug.Log (CurString+" "+CaesarString+" ");
 		Answer.characterLimit = CurString.Length;
@@ -121,7 +129,7 @@ public class CaesarCipher : WordPuzzles {
 		yield return new WaitForSeconds (2);
 		ConfirmationText.text = "";
 		isCorrect = false;
-		bool dou = false;
+		dou = false;
 		while (!dou) {
 			words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
 			foreach (char x in CurString)
