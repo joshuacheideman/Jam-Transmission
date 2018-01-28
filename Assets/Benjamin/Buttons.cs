@@ -15,6 +15,8 @@ public class Buttons : MonoBehaviour {
 	private List<int> ButtonSelectX;
 	private List<int> ButtonSelect1;
 	private List<int> ButtonSelect2;
+	public CaesarCipher cc;
+	public WordScrambler ws;
 	void Start(){
 		weaknesses = new bool[4];
 		options = new bool[4];
@@ -36,7 +38,6 @@ public class Buttons : MonoBehaviour {
 		else
 			ButtonSelectX = new List<int> (ButtonSelect2);
 		foreach (int i in ButtonSelectX) {
-			Debug.Log ("ONE IS " + i);
 			adjustOptions (i);
 		}
 		for (int k = 0; k < 4; k++) {
@@ -133,7 +134,40 @@ public class Buttons : MonoBehaviour {
 				Debug.Log ("Our " + Decode (i) + " attempt failed!");
 	}
 	void Endpoint(){
-		
+		int hack = (cc.CaesarScore * 5) + (ws.ScramblerScore);
+		if (hack > 5) {
+			Debug.Log ("Congratulations! You've hacked the communications! SUCCESS!");
+			return;
+		}
+		if (fubar == 0) {
+			Debug.Log ("You failed to damage the message OR prevent the message from getting received.\nYour plans have failed. GAME OVER.");
+			return;
+		} else if (DetectAttempt ()) {
+			switch (fubar) {
+			case 1:
+				hack = 5;
+				break;
+			case 2:
+				hack = 3;
+				break;
+			}
+			if (UnityEngine.Random.Range (0, 10) > 5)
+				Debug.Log ("but the Enemy couldn't repair their message! SUCCESS, by the skin of your teeth!");
+			else
+				Debug.Log ("and the Enemy was able to piece their message together! GAME OVER!");
+		}
+	}
+	bool DetectAttempt(){
+		bool repair = false;
+		foreach (int i in ButtonSelect2) {
+			if (cc.CaesarScore > 0) {
+				cc.CaesarScore--;
+			} else if (weaknesses [i] && UnityEngine.Random.Range (0, 100) > (Chance (i) * 50) + (ws.ScramblerScore * 10)) {
+				Debug.Log ("Your " + Decode (i) + " attempt was found out, ");
+				repair = true;
+			}
+		}
+		return repair;
 	}
 	string Decode(int i){
 		switch (i) {
