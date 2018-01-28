@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WordPuzzles : PuzzleManager {
+public class WordPuzzles : MonoBehaviour {
 	protected Dictionary<int,string> words;
 	protected bool isCorrect;
 	protected Text ConfirmationText;
