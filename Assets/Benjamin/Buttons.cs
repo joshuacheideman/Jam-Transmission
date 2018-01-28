@@ -133,9 +133,9 @@ public class Buttons : MonoBehaviour {
 		foreach (int i in ButtonSelect2)
 			if (weaknesses [i] && UnityEngine.Random.Range (0, 100) < (Chance (i) * 100)/ButtonSelect2.Count) {
 				fubar++;
-				s+= "We were able to successfully " + Decode (i) + " the message!";
+				s+= "We were able to successfully " + Decode (i) + " the message!\n";
 			} else
-				s+="Our " + Decode (i) + " attempt failed!";
+				s+="Our " + Decode (i) + " attempt failed!\n";
 		JamText.text = s;
 	}
 	void Endpoint(){
