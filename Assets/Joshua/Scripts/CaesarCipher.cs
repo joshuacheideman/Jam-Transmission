@@ -6,7 +6,8 @@ using System.Text;
 public class CaesarCipher : WordPuzzles {
 	string CurString;
 	Text CaesarText;
-
+	PuzzleManager manag;
+	private GameObject Ciph;
 	string CaesarString;
 	char[] alphabet = {
 		'a',
@@ -38,14 +39,16 @@ public class CaesarCipher : WordPuzzles {
 	};
 	// Use this for initialization
 	void Start () {
+		manag = GameObject.Find ("PuzzleManager").GetComponent<PuzzleManager> ();
 		isCorrect = false;
+		Ciph = this.gameObject;
 		AddWordToDictionary ();
 		CaesarText = GameObject.Find ("WordPuzzleText").gameObject.GetComponent<Text> ();
 		Answer = GameObject.Find ("AnswerField").gameObject.GetComponent<InputField> ();
 		ConfirmationText = GameObject.Find ("ConfirmationText").gameObject.GetComponent<Text> ();
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
 		MakeCipher (CurString);
-		Debug.Log (CurString+" "+CaesarString+" ");
+		//Debug.Log (CurString+" "+CaesarString+" ");
 		Answer.characterLimit = CurString.Length;
 		CaesarText.text = CaesarString;
 		Answer.onEndEdit.AddListener(val =>
@@ -59,6 +62,7 @@ public class CaesarCipher : WordPuzzles {
 					{
 						PrintSuccess();
 						StartCoroutine(GenerateNewWord());
+						StartCoroutine(DeActivateCiph());
 					}
 				}
 			});
@@ -73,7 +77,7 @@ public class CaesarCipher : WordPuzzles {
 		int CaesarTranslate;
 		CaesarString = word;
 		CaesarTranslate = Random.Range (1, 26);
-		Debug.Log (CaesarTranslate);
+		//Debug.Log (CaesarTranslate);
 		for (int i = 0; i < word.Length; i++) {
 			CaesarString= ReplaceCharacter (i, CaesarString,CaesarTranslate);
 		}
@@ -108,7 +112,7 @@ public class CaesarCipher : WordPuzzles {
 	}
 	IEnumerator GenerateNewWord()
 	{
-		yield return new WaitForSeconds (5);
+		yield return new WaitForSeconds (3);
 		ConfirmationText.text = "";
 		isCorrect = false;
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
@@ -116,6 +120,12 @@ public class CaesarCipher : WordPuzzles {
 		Answer.characterLimit = CurString.Length;
 		MakeCipher (CurString);
 		CaesarText.text = CaesarString;
-		Debug.Log (CurString);
+		//Debug.Log (CurString);
+	}
+	IEnumerator DeActivateCiph()
+	{
+		yield return new WaitForSeconds (3);
+		manag.isCiph = false;
+		Ciph.SetActive (false);
 	}
 }

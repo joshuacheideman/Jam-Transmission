@@ -8,9 +8,12 @@ public class WordScrambler : WordPuzzles {
 	private string CurString;
 	private string scrambledword;
 	private List<int> positions;
-
+	private GameObject Rearrange;
+	PuzzleManager manag;
 	// Use this for initialization
 	void Start () {
+		manag = GameObject.Find ("PuzzleManager").GetComponent<PuzzleManager> ();
+		Rearrange = this.gameObject;
 		isCorrect = false;
 		AddWordToDictionary ();
 		ScrambleText = GameObject.Find ("WordPuzzleText").gameObject.GetComponent<Text> ();
@@ -29,6 +32,7 @@ public class WordScrambler : WordPuzzles {
 					{
 						PrintSuccess();
 						StartCoroutine(GenerateNewWord());
+						StartCoroutine(DeActivateRearrange());
 					}
 				}
 			});
@@ -96,7 +100,7 @@ public class WordScrambler : WordPuzzles {
 	}
 	IEnumerator GenerateNewWord()
 	{
-		yield return new WaitForSeconds (5);
+		yield return new WaitForSeconds (3);
 		ConfirmationText.text = "";
 		isCorrect = false;
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
@@ -104,5 +108,11 @@ public class WordScrambler : WordPuzzles {
 		Answer.characterLimit = CurString.Length;
 
 		scrambledword = ScrambleWord (CurString);
+	}
+	IEnumerator DeActivateRearrange()
+	{
+		yield return new WaitForSeconds (3);	
+		manag.isRearr = false;
+		Rearrange.SetActive (false);
 	}
 }
