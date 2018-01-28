@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour {
+	int fubar;
 	public Button[] buttons;
 	private bool SatSelect;
+	private bool[] weaknesses;
 	private bool[] options;
 	public bool sat0connect;
 	public bool sat1connect;
@@ -13,10 +16,12 @@ public class Buttons : MonoBehaviour {
 	private List<int> ButtonSelect1;
 	private List<int> ButtonSelect2;
 	void Start(){
+		weaknesses = new bool[4];
 		options = new bool[4];
 		ButtonSelectX = new List<int> ();
 		ButtonSelect1 = new List<int> ();
 		ButtonSelect2 = new List<int> ();
+		BeginRun ();
 	}
 	public void adjustSatellite(bool sat){
 		SatSelect = sat;
@@ -87,6 +92,74 @@ public class Buttons : MonoBehaviour {
 			ButtonSelect1 = new List<int> (ButtonSelectX);
 		else
 			ButtonSelect2 = new List<int> (ButtonSelectX);
+	}
+	public void BeginRun(){
+		StartCoroutine (Timer ());
+	}
+	public IEnumerator Timer(){
+		Startpoint ();
+		yield return new WaitForSeconds (23);
+		Checkpoint1 ();
+		yield return new WaitForSeconds (46);
+		Checkpoint2 ();
+		yield return new WaitForSeconds (69);
+		Endpoint ();
+	}
+	void Startpoint(){
+//		UnityEngine.Random rand = new UnityEngine.Random ();
+		weaknesses [UnityEngine.Random.Range(0,4)] = true;
+		int i = UnityEngine.Random.Range (0, 4);
+		while (weaknesses [i] == true)
+			i = UnityEngine.Random.Range (0, 4);
+		weaknesses [i] = true;
+	}
+	void Checkpoint1(){
+		sat0connect = false;
+		ButtonSelect1.Sort ();
+		foreach (int i in ButtonSelect1)
+			if (weaknesses [i])
+				Debug.Log ("We can " + Decode (i) + " the message with a chance of " + Chance (i) * 100 + " percent!");
+			else
+				Debug.Log ("The message can't be " + Decode (i) + "d! We'll have to try another way!");
+	}
+	void Checkpoint2(){
+		sat1connect = false;
+		ButtonSelect2.Sort ();
+		foreach (int i in ButtonSelect2)
+			if (weaknesses [i] && UnityEngine.Random.Range (0, 100) < Chance (i) * 100) {
+				fubar++;
+				Debug.Log ("We were able to successfully " + Decode (i) + " the message!");
+			} else
+				Debug.Log ("Our " + Decode (i) + " attempt failed!");
+	}
+	void Endpoint(){
+		
+	}
+	string Decode(int i){
+		switch (i) {
+		case 0:
+			return "Dissipate";
+		case 1:
+			return "Neutralize";
+		case 2:
+			return "Scramble";
+		case 3:
+			return "Rephrase";
+		}
+		return "";
+	}
+	float Chance(int i){
+		switch (i) {
+		case 0:
+			return 0.6f;
+		case 1:
+			return 0.8f;
+		case 2:
+			return 0.9f;
+		case 3:
+			return 0.7f;
+		}
+		return 0f;
 	}
 }
 
