@@ -118,7 +118,13 @@ public class CaesarCipher : WordPuzzles {
 		yield return new WaitForSeconds (2);
 		ConfirmationText.text = "";
 		isCorrect = false;
-		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
+		bool dou = false;
+		while (!dou) {
+			words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
+			foreach (char x in CurString)
+				if (CurString.IndexOf (x) != CurString.LastIndexOf (x))
+					dou = true;
+		}
 		Answer.text = "";
 		Answer.characterLimit = CurString.Length;
 		MakeCipher (CurString);
