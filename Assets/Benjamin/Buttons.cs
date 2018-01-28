@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Button : MonoBehaviour {
+public class Buttons : MonoBehaviour {
 	public Button[] buttons;
 	private bool SatSelect;
 	private bool[] options;
