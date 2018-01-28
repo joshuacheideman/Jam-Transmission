@@ -572,7 +572,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 482861598}
+      - m_Target: {fileID: 0}
         m_MethodName: adjustOptions
         m_Mode: 3
         m_Arguments:
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 482861598}
+      - m_Target: {fileID: 0}
         m_MethodName: adjustOptions
         m_Mode: 3
         m_Arguments:
@@ -752,7 +752,6 @@ GameObject:
   - component: {fileID: 482861595}
   - component: {fileID: 482861594}
   - component: {fileID: 482861593}
-  - component: {fileID: 482861598}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -830,24 +829,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &482861598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 482861592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d50a7569c01540fe839ac804d16c6fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 407570596}
-  - {fileID: 440706013}
-  - {fileID: 2122412342}
-  - {fileID: 1553840515}
-  sat0connect: 1
-  sat1connect: 1
 --- !u!1 &597431432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1127,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 482861598}
+      - m_Target: {fileID: 0}
         m_MethodName: adjustSatellite
         m_Mode: 6
         m_Arguments:
@@ -1341,7 +1322,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 482861598}
+      - m_Target: {fileID: 0}
         m_MethodName: adjustSatellite
         m_Mode: 6
         m_Arguments:
@@ -1734,7 +1715,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 482861598}
+      - m_Target: {fileID: 0}
         m_MethodName: adjustOptions
         m_Mode: 3
         m_Arguments:
@@ -2140,7 +2121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 482861598}
+      - m_Target: {fileID: 0}
         m_MethodName: Execute
         m_Mode: 1
         m_Arguments:
@@ -2262,7 +2243,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 482861598}
+      - m_Target: {fileID: 0}
         m_MethodName: adjustOptions
         m_Mode: 3
         m_Arguments:
