@@ -10,9 +10,11 @@ public class WordScrambler : WordPuzzles {
 	private List<int> positions;
 	private GameObject Rearrange;
 	PuzzleManager manag;
+	public int ScramblerScore;
 	// Use this for initialization
 	void Start () {
 		manag = GameObject.Find ("PuzzleManager").GetComponent<PuzzleManager> ();
+		ScramblerScore = 0;
 		Rearrange = this.gameObject;
 		isCorrect = false;
 		AddWordToDictionary ();
@@ -37,11 +39,12 @@ public class WordScrambler : WordPuzzles {
 				}
 			});
 		scrambledword = ScrambleWord (CurString);
+		ScrambleText.text = scrambledword;
+		Debug.Log (scrambledword);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		ScrambleText.text = scrambledword;
 	}
 	private string swap(int idx1,int idx2,string word)
 	{
@@ -55,6 +58,7 @@ public class WordScrambler : WordPuzzles {
 	{
 		string newword = word;
 		int wordsize = word.Length;
+
 		for (int i = 0; i < 100; i++) 
 		{
 			int index1 = Random.Range (0, wordsize);
@@ -97,21 +101,26 @@ public class WordScrambler : WordPuzzles {
 		string message = "";
 		message = "You have successfully figured out the word!";
 		ConfirmationText.text = message;
+		ScramblerScore++;
+		Debug.Log (ScramblerScore);
 	}
 	IEnumerator GenerateNewWord()
 	{
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (2);
 		ConfirmationText.text = "";
 		isCorrect = false;
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
 		Answer.text = "";
 		Answer.characterLimit = CurString.Length;
-
 		scrambledword = ScrambleWord (CurString);
+		ScrambleText.text = scrambledword;
 	}
-	IEnumerator DeActivateRearrange()
+	public IEnumerator DeActivateRearrange()
 	{
-		yield return new WaitForSeconds (3);	
+		if(isCorrect==false)
+		yield return new WaitForSeconds (0);
+		if (isCorrect == true)
+			yield return new WaitForSeconds (2);
 		manag.isRearr = false;
 		Rearrange.SetActive (false);
 	}

@@ -9,6 +9,7 @@ public class CaesarCipher : WordPuzzles {
 	PuzzleManager manag;
 	private GameObject Ciph;
 	string CaesarString;
+	public int CaesarScore = 0;
 	char[] alphabet = {
 		'a',
 		'b',
@@ -43,7 +44,7 @@ public class CaesarCipher : WordPuzzles {
 		isCorrect = false;
 		Ciph = this.gameObject;
 		AddWordToDictionary ();
-		CaesarText = GameObject.Find ("WordPuzzleText").gameObject.GetComponent<Text> ();
+		CaesarText = GameObject.Find ("CipherPuzzleText").gameObject.GetComponent<Text> ();
 		Answer = GameObject.Find ("AnswerField").gameObject.GetComponent<InputField> ();
 		ConfirmationText = GameObject.Find ("ConfirmationText").gameObject.GetComponent<Text> ();
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
@@ -109,10 +110,12 @@ public class CaesarCipher : WordPuzzles {
 		string message = "";
 		message = "You have successfully figured out the word!";
 		ConfirmationText.text = message;
+		CaesarScore++;
+		Debug.Log (CaesarScore);
 	}
 	IEnumerator GenerateNewWord()
 	{
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (2);
 		ConfirmationText.text = "";
 		isCorrect = false;
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
@@ -122,9 +125,12 @@ public class CaesarCipher : WordPuzzles {
 		CaesarText.text = CaesarString;
 		//Debug.Log (CurString);
 	}
-	IEnumerator DeActivateCiph()
+	public IEnumerator DeActivateCiph()
 	{
-		yield return new WaitForSeconds (3);
+		if(isCorrect==false)
+		yield return new WaitForSeconds (0);
+		if (isCorrect == true)
+			yield return new WaitForSeconds (2);
 		manag.isCiph = false;
 		Ciph.SetActive (false);
 	}

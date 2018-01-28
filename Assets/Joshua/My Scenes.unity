@@ -1228,7 +1228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 37.599968}
+  m_AnchoredPosition: {x: 0, y: 37.59996}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691036516
@@ -1999,6 +1999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36325f7c451aa846a76b8db2cb2f529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CaesarScore: 0
 --- !u!1 &1272793954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,6 +2049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19dfd206954b4e4f97a25634113633d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScramblerScore: 0
 --- !u!1 &1515418460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2108,7 @@ GameObject:
   - component: {fileID: 1533751550}
   - component: {fileID: 1533751549}
   m_Layer: 5
-  m_Name: WordPuzzleText
+  m_Name: CipherPuzzleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2565,7 +2567,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
