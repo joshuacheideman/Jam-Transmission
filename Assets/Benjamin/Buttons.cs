@@ -17,6 +17,7 @@ public class Buttons : MonoBehaviour {
 	private List<int> ButtonSelect2;
 	public CaesarCipher cc;
 	public WordScrambler ws;
+	public Text JamText;
 	void Start(){
 		weaknesses = new bool[4];
 		options = new bool[4];
@@ -119,9 +120,9 @@ public class Buttons : MonoBehaviour {
 		ButtonSelect1.Sort ();
 		foreach (int i in ButtonSelect1)
 			if (weaknesses [i])
-				Debug.Log ("We can " + Decode (i) + " the message with a chance of " + Chance (i) * 100 + " percent!");
+				JamText.text="We can " + Decode (i) + " the message with a chance of " + Chance (i) * 100 + " percent!";
 			else
-				Debug.Log ("The message can't be " + Decode (i) + "d! We'll have to try another way!");
+				JamText.text="The message can't be " + Decode (i) + "d! We'll have to try another way!";
 	}
 	void Checkpoint2(){
 		sat1connect = false;
@@ -129,18 +130,18 @@ public class Buttons : MonoBehaviour {
 		foreach (int i in ButtonSelect2)
 			if (weaknesses [i] && UnityEngine.Random.Range (0, 100) < Chance (i) * 100) {
 				fubar++;
-				Debug.Log ("We were able to successfully " + Decode (i) + " the message!");
+				JamText.text = "We were able to successfully " + Decode (i) + " the message!";
 			} else
-				Debug.Log ("Our " + Decode (i) + " attempt failed!");
+				JamText.text ="Our " + Decode (i) + " attempt failed!";
 	}
 	void Endpoint(){
 		int hack = (cc.CaesarScore * 5) + (ws.ScramblerScore);
 		if (hack > 5) {
-			Debug.Log ("Congratulations! You've hacked the communications! SUCCESS!");
+			JamText.text = "Congratulations! You've hacked the communications! SUCCESS!";
 			return;
 		}
 		if (fubar == 0) {
-			Debug.Log ("You failed to damage the message OR prevent the message from getting received.\nYour plans have failed. GAME OVER.");
+			JamText.text ="You failed to damage the message OR prevent the message from getting received.\nYour plans have failed. GAME OVER.";
 			return;
 		} else if (DetectAttempt ()) {
 			switch (fubar) {
@@ -152,9 +153,9 @@ public class Buttons : MonoBehaviour {
 				break;
 			}
 			if (UnityEngine.Random.Range (0, 10) > 5)
-				Debug.Log ("but the Enemy couldn't repair their message! SUCCESS, by the skin of your teeth!");
+				JamText.text +="but the Enemy couldn't repair their message! SUCCESS, by the skin of your teeth!";
 			else
-				Debug.Log ("and the Enemy was able to piece their message together! GAME OVER!");
+				JamText.text += "and the Enemy was able to piece their message together! GAME OVER!";
 		}
 	}
 	bool DetectAttempt(){
@@ -163,7 +164,7 @@ public class Buttons : MonoBehaviour {
 			if (cc.CaesarScore > 0) {
 				cc.CaesarScore--;
 			} else if (weaknesses [i] && UnityEngine.Random.Range (0, 100) > (Chance (i) * 50) + (ws.ScramblerScore * 10)) {
-				Debug.Log ("Your " + Decode (i) + " attempt was found out, ");
+				JamText.text = "Your " + Decode (i) + " attempt was found out, ";
 				repair = true;
 			}
 		}
