@@ -131,7 +131,7 @@ public class Buttons : MonoBehaviour {
 		ButtonSelect2.Sort ();
 		string s = "";
 		foreach (int i in ButtonSelect2)
-			if (weaknesses [i] && UnityEngine.Random.Range (0, 100) < (Chance (i) * 100)/ButtonSelect2.Count) {
+			if (weaknesses [i] && ((UnityEngine.Random.Range (0, 100) < (Chance (i) * 100)&&ButtonSelect2.Count==1)||(UnityEngine.Random.Range (0, 100) < (Chance (i) * 100)*0.75&&ButtonSelect2.Count==2))) {
 				fubar++;
 				s+= "We were able to successfully " + Decode (i) + " the message!\n";
 			} else
@@ -172,6 +172,8 @@ public class Buttons : MonoBehaviour {
 				repair = true;
 			}
 		}
+		if (!repair)
+			JamText.text = "Your hacking maneuvering slipped past the Enemy's eyes! SUCCESS!";
 		return repair;
 	}
 	string Decode(int i){
