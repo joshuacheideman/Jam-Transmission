@@ -11,6 +11,9 @@ public class WordScrambler : WordPuzzles {
 	private GameObject Rearrange;
 	PuzzleManager manag;
 	public int ScramblerScore;
+	private bool isCorrect;
+	private Text ConfirmationText;
+	private InputField Answer;
 	// Use this for initialization
 	void Start () {
 		manag = GameObject.Find ("PuzzleManager").GetComponent<PuzzleManager> ();
@@ -19,7 +22,7 @@ public class WordScrambler : WordPuzzles {
 		isCorrect = false;
 		AddWordToDictionary ();
 		ScrambleText = GameObject.Find ("WordPuzzleText").gameObject.GetComponent<Text> ();
-		Answer = GameObject.Find ("AnswerField").gameObject.GetComponent<InputField> ();
+		Answer = GameObject.Find ("ScrambleAnswerField").gameObject.GetComponent<InputField> ();
 		ConfirmationText = GameObject.Find ("ConfirmationText").gameObject.GetComponent<Text> ();
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
 		Answer.characterLimit = CurString.Length;

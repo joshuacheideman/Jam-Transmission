@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class WordPuzzles : MonoBehaviour {
 	protected Dictionary<int,string> words;
-	protected bool isCorrect;
-	protected Text ConfirmationText;
-	protected InputField Answer;
 	// Use this for initialization
 	protected void AddWordToDictionary()
 	{

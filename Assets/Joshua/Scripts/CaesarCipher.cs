@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 public class CaesarCipher : WordPuzzles {
-	string CurString;
+	private string CurString;
 	Text CaesarText;
 	PuzzleManager manag;
 	private GameObject Ciph;
 	string CaesarString;
 	public int CaesarScore = 0;
+	private bool isCorrect;
+	private Text ConfirmationText;
+	private InputField Answer;
 	char[] alphabet = {
 		'a',
 		'b',
@@ -45,8 +48,8 @@ public class CaesarCipher : WordPuzzles {
 		Ciph = this.gameObject;
 		AddWordToDictionary ();
 		CaesarText = GameObject.Find ("CipherPuzzleText").gameObject.GetComponent<Text> ();
-		Answer = GameObject.Find ("AnswerField").gameObject.GetComponent<InputField> ();
-		ConfirmationText = GameObject.Find ("ConfirmationText").gameObject.GetComponent<Text> ();
+		Answer = GameObject.Find ("CiphAnswerField").gameObject.GetComponent<InputField> ();
+		ConfirmationText = GameObject.Find ("CipherConfirmationText").gameObject.GetComponent<Text> ();
 		words.TryGetValue(Random.Range(1,words.Count+1),out CurString);
 		MakeCipher (CurString);
 		//Debug.Log (CurString+" "+CaesarString+" ");
@@ -125,6 +128,7 @@ public class CaesarCipher : WordPuzzles {
 				if (CurString.IndexOf (x) != CurString.LastIndexOf (x))
 					dou = true;
 		}
+
 		Answer.text = "";
 		Answer.characterLimit = CurString.Length;
 		MakeCipher (CurString);
