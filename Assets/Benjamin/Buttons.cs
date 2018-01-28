@@ -118,21 +118,25 @@ public class Buttons : MonoBehaviour {
 	void Checkpoint1(){
 		sat0connect = false;
 		ButtonSelect1.Sort ();
+		string s = "";
 		foreach (int i in ButtonSelect1)
 			if (weaknesses [i])
-				JamText.text="We can " + Decode (i) + " the message with a chance of " + Chance (i) * 100 + " percent!";
+				s+="We can " + Decode (i) + " the message with a chance of " + Chance (i) * 100 + " percent!\n";
 			else
-				JamText.text="The message can't be " + Decode (i) + "d! We'll have to try another way!";
+				s+="The message can't be " + Decode (i) + "d! We'll have to try another way!\n";
+		JamText.text = s;
 	}
 	void Checkpoint2(){
 		sat1connect = false;
 		ButtonSelect2.Sort ();
+		string s = "";
 		foreach (int i in ButtonSelect2)
 			if (weaknesses [i] && UnityEngine.Random.Range (0, 100) < (Chance (i) * 100)/ButtonSelect2.Count) {
 				fubar++;
-				JamText.text = "We were able to successfully " + Decode (i) + " the message!";
+				s+= "We were able to successfully " + Decode (i) + " the message!";
 			} else
-				JamText.text ="Our " + Decode (i) + " attempt failed!";
+				s+="Our " + Decode (i) + " attempt failed!";
+		JamText.text = s;
 	}
 	void Endpoint(){
 		int hack = (cc.CaesarScore * 5) + (ws.ScramblerScore);
